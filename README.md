@@ -26,7 +26,8 @@ The result is a fully reproducible pipeline where anyone can start with the raw 
 cafe-sales-analysis/
 │
 ├── data/
-│   └── raw/dirty_cafe_sales.csv       # Place Kaggle CSV here (not uploaded)
+│   └── dirty_cafe_sales.csv
+│   └── prep.cafe_sales_clean.csv   
 │
 ├── sql/
 │   ├── 01_schemas.sql                 # create raw, prep, mart schemas
@@ -35,7 +36,7 @@ cafe-sales-analysis/
 │   ├── 04_quality_checks.sql          # sanity checks
 │   ├── 05_analysis.sql                # analysis queries (KPIs, trends)
 │   ├── 06_views_mart.sql              # optional BI views
-│   └── 99_reset_all.sql               # reset/drop all schemas
+│   └── 99_teardown.sql               # reset/drop all schemas
 │
 ├── dashboard/
 │   ├── cafe_sales.twbx                # Tableau packaged workbook
@@ -54,7 +55,7 @@ cafe-sales-analysis/
 
 ##  How to Reproduce  
 
-### 1 Set up PostgreSQL  
+### 1. Set up PostgreSQL  
 - Create a new database (optional):  
 ```sql
 CREATE DATABASE cafe_sales_db;
@@ -63,7 +64,7 @@ CREATE DATABASE cafe_sales_db;
 
 ---
 
-### 2 Run SQL Pipeline  
+### 2. Run SQL Pipeline  
 
 1. **Create schemas**  
    ```sql
@@ -118,10 +119,9 @@ CREATE DATABASE cafe_sales_db;
 
 ---
 
-### 3 Connect to Tableau  
+### 3. Connect to Tableau  
 
-1. **Option A**: Export `prep.cafe_sales_clean` to CSV and connect Tableau → Text File.  
-2. **Option B**: Connect Tableau directly to Postgres.  
+Export `prep.cafe_sales_clean` to CSV and connect Tableau → Text File.   
 
 **Build Sheets:**  
 - Top Items (bar)  
@@ -130,7 +130,6 @@ CREATE DATABASE cafe_sales_db;
 - Monthly Sales Trend (line, exclude NULLs)  
 - KPIs:  
   - Total Revenue = `SUM([Total Spent])`  
-  - Transactions = `COUNTD([Transaction ID])`  
   - AOV = `SUM([Total Spent]) / COUNTD([Transaction ID])`  
 
 **Assemble Dashboard:**  
@@ -148,8 +147,7 @@ CREATE DATABASE cafe_sales_db;
   - Clean: 10,000  
 
 - **KPIs:**  
-  - Total Revenue ≈ **$88,952**  
-  - Transactions = **10,000**  
+  - Total Revenue ≈ **$88,952**   
   - AOV ≈ **$8.90**  
 
 - **Insights:**  
