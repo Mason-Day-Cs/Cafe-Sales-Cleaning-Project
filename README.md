@@ -1,6 +1,6 @@
 # Cafe-Sales-Cleaning-Project
 
-## 📌 Project Overview  
+##  Project Overview  
 This project demonstrates an **end-to-end data analytics workflow**:  
 
 1. **Dirty Dataset (CSV)** → raw café transactions from Kaggle  
@@ -12,7 +12,7 @@ The result is a fully reproducible pipeline where anyone can start with the raw 
 
 ---
 
-## 🛠️ Tech Stack  
+##  Tech Stack  
 - **PostgreSQL** (tested on v14+)  
 - **DBeaver** (or psql) → database connection & query execution  
 - **Tableau Public** → dashboarding  
@@ -20,7 +20,7 @@ The result is a fully reproducible pipeline where anyone can start with the raw 
 
 ---
 
-## 📂 Repository Structure  
+##  Repository Structure  
 
 ```
 cafe-sales-analysis/
@@ -46,15 +46,15 @@ cafe-sales-analysis/
 
 ---
 
-## ⬇️ Dataset  
+##   Dataset  
 - Kaggle: [Cafe Sales (Dirty Data for Cleaning Training)](https://www.kaggle.com/datasets/ahmedmohamed2003/cafe-sales-dirty-data-for-cleaning-training)  
 - Save as: `data/raw/dirty_cafe_sales.csv`  
 
 ---
 
-## 🚀 How to Reproduce  
+##  How to Reproduce  
 
-### 1️⃣ Set up PostgreSQL  
+### 1 Set up PostgreSQL  
 - Create a new database (optional):  
 ```sql
 CREATE DATABASE cafe_sales_db;
@@ -63,7 +63,7 @@ CREATE DATABASE cafe_sales_db;
 
 ---
 
-### 2️⃣ Run SQL Pipeline  
+### 2 Run SQL Pipeline  
 
 1. **Create schemas**  
    ```sql
@@ -82,7 +82,7 @@ CREATE DATABASE cafe_sales_db;
      \copy raw.cafe_sales FROM 'data/raw/dirty_cafe_sales.csv' WITH (FORMAT csv, HEADER true);
      ```
 
-   ✅ Check row count (should be 10,000):  
+   Check row count (should be 10,000):  
    ```sql
    SELECT COUNT(*) FROM raw.cafe_sales;
    ```
@@ -118,7 +118,7 @@ CREATE DATABASE cafe_sales_db;
 
 ---
 
-### 3️⃣ Connect to Tableau  
+### 3 Connect to Tableau  
 
 1. **Option A**: Export `prep.cafe_sales_clean` to CSV and connect Tableau → Text File.  
 2. **Option B**: Connect Tableau directly to Postgres.  
@@ -141,7 +141,7 @@ CREATE DATABASE cafe_sales_db;
 
 ---
 
-## ✅ Expected Outputs  
+##  Expected Outputs  
 
 - **Row Counts:**  
   - Raw: 10,000  
@@ -160,7 +160,7 @@ CREATE DATABASE cafe_sales_db;
 
 ---
 
-## 📊 Dashboard  
+##  Dashboard  
 
 **Interactive Version (Tableau Public):** [🔗 Add your Tableau Public link here]  
 
@@ -169,7 +169,7 @@ CREATE DATABASE cafe_sales_db;
 
 ---
 
-## 🔁 Reset & Re-run  
+##  Reset & Re-run  
 To drop everything and start fresh:  
 ```sql
 \i sql/99_reset_all.sql
@@ -177,7 +177,7 @@ To drop everything and start fresh:
 
 ---
 
-## 📣 Summary  
+##  Summary  
 This project shows a **complete analyst workflow**:  
 
 - SQL for cleaning & data quality checks  
