@@ -160,7 +160,7 @@ Export `prep.cafe_sales_clean` to CSV and connect Tableau → Text File.
 
 ##  Dashboard  
 
-**Interactive Version (Tableau Public):** [[https://public.tableau.com/app/profile/mason.day6914/viz/cafe_sales_clean_project/Dashboard1]]  
+**Interactive Version (Tableau Public):** [https://public.tableau.com/app/profile/mason.day6914/viz/cafe_sales_clean_project/Dashboard1]  
 
 **Preview Screenshot:**  
 ![Dashboard Preview](dashboard/dashboard_preview.png)  
