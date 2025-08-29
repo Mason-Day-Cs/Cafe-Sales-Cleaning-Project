@@ -12,7 +12,7 @@ The result is a fully reproducible pipeline where anyone can start with the raw 
 
 ---
 
-##  Tech Stack  
+##  Tools Used  
 - **PostgreSQL** (tested on v14+)  
 - **DBeaver** (or psql) → database connection & query execution  
 - **Tableau Public** → dashboarding  
@@ -67,12 +67,12 @@ CREATE DATABASE cafe_sales_db;
 
 1. **Create schemas**  
    ```sql
-   \i sql/01_schemas.sql
+    sql/01_schemas.sql
    ```
 
 2. **Create raw table**  
    ```sql
-   \i sql/02_raw_table.sql
+    sql/02_raw_table.sql
    ```
 
 3. **Load CSV into raw.cafe_sales**  
@@ -89,21 +89,21 @@ CREATE DATABASE cafe_sales_db;
 
 4. **Clean + prep data**  
    ```sql
-   \i sql/03_clean_prep.sql
+    sql/03_clean_prep.sql
    ```
 
    This creates `prep.cafe_sales_clean` with standardized fields.
 
 5. **Quality checks**  
    ```sql
-   \i sql/04_quality_checks.sql
+    sql/04_quality_checks.sql
    ```
    - Row counts should match (10,000).  
    - Mismatched totals should be `0`.  
 
 6. **Analysis queries**  
    ```sql
-   \i sql/05_analysis.sql
+    sql/05_analysis.sql
    ```
    - Top items  
    - Payment method distribution  
@@ -113,7 +113,7 @@ CREATE DATABASE cafe_sales_db;
 
 7. **Optional BI views**  
    ```sql
-   \i sql/06_views_mart.sql
+    sql/06_views_mart.sql
    ```
 
 ---
@@ -172,7 +172,7 @@ CREATE DATABASE cafe_sales_db;
 ##  Reset & Re-run  
 To drop everything and start fresh:  
 ```sql
-\i sql/99_reset_all.sql
+ sql/99_teardown.sql
 ```
 
 ---
